@@ -24,7 +24,9 @@ This project provides a terminal‑based interface to interact with AI models ho
 ## Prerequisites
 
 - [Python 3.8+](https://www.python.org/downloads/)
-- An Ollama API key. Ollama has a free tier for cloud access. *Note: The script is configured to use an API Key from `.env`.*
+- An Ollama API key. Ollama has a free tier for cloud access. 
+  You can generate your free API key from the Ollama website after creating your Ollama account here: https://ollama.com/settings/keys
+  *Note: The script is configured to use an API Key from `.env`.*
 
 ## Setup
 
@@ -55,7 +57,6 @@ This project provides a terminal‑based interface to interact with AI models ho
     ```
     OLLAMA_API_KEY=your_actual_api_key_here
     ```
-    You can generate your free API key from the Ollama website after creating your Ollama account here: https://ollama.com/settings/keys
 
 ## Usage
 
