@@ -66,7 +66,7 @@ Run the main script:
 python main.py
 ```
 
-I.  The script will fetch and list all available cloud models hostes by Ollama. As of 06 January, 2026, the supported cloud models are:
+I.  The script will fetch and list all available cloud models hosted by Ollama. As of 06 January, 2026, the supported cloud models are:
 
 1. cogito-2.1:671b
 2. glm-4.6
