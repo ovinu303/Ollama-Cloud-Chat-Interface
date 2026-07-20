@@ -1,116 +1,76 @@
 # Ollama Cloud Chat Interface
 
-This project provides a terminal‑based interface to interact with AI models hosted on Ollama Cloud. It fetches and displays available models, lets you select one, and then chat with it in an iterative session. Responses are rendered with Markdown formatting using the [`rich`](https://github.com/Textualize/rich) library for improved readability.
+This project provides a terminal-based chat interface for models hosted through the Ollama Cloud API. It fetches the available models from Ollama, lets you choose one, and then starts an interactive conversation session. Responses are rendered in the terminal using Markdown formatting via the Rich library.
 
 ## Features
-- Fetches available Ollama Cloud models dynamically
-- Interactive chat loop with chosen model
-- Markdown rendering in terminal via `rich`
-- Easy configuration with `.env` file
+- Fetches available Ollama Cloud models dynamically from the API
+- Lets you select a model from the list and start chatting immediately
+- Displays assistant responses with Markdown formatting in the terminal
+- Uses a local `.env` file for your API key configuration
+- Handles unavailable or subscription-restricted models gracefully
 
 ## Prerequisites
-- [Python 3.8+](https://www.python.org/downloads/)
-- [pip](https://pip.pypa.io/en/stable/installation/)
-- An Ollama API key (Ollama offers a free tier for cloud access)
-- Required Python packages: `requests`, `ollama`, `python-dotenv`, `rich`
+- Python 3.8 or newer
+- pip
+- An Ollama API key from your Ollama account
+- Internet access to reach the Ollama API endpoint
 
 ## Setup
 
-1. **Clone the repository**:
+1. Clone the repository:
    ```bash
    git clone <repository_url>
-   cd <repository_folder>
+   cd Ollama-Cloud-Chat-Interface
+   ```
 
-## Prerequisites
+2. Create and activate a virtual environment (recommended):
+   ```bash
+   python -m venv .venv
 
-- [Python 3.8+](https://www.python.org/downloads/)
-- An Ollama API key. Ollama has a free tier for cloud access. 
-  You can generate your free API key from the Ollama website after creating your Ollama account here: https://ollama.com/settings/keys
-  *Note: The script is configured to use an API Key from `.env`.*
+   # Windows (PowerShell)
+   .\.venv\Scripts\Activate.ps1
 
-## Setup
+   # Windows (cmd.exe)
+   .\.venv\Scripts\activate.bat
 
-1.  **Clone the repository** (if you haven't already):
-    ```bash
-    git clone <repository_url>
-    cd <repository_folder>
-    ```
+   # macOS/Linux
+   source .venv/bin/activate
+   ```
 
-2.  **Create a virtual environment** (optional):
-    ```bash
-    python -m venv venv
-    # Windows
-    .\venv\Scripts\Activate.ps1
-    # Windows (cmd.exe)
-    .\venv\Scripts\activate.bat
-    # macOS/Linux
-    source venv/bin/activate
-    ```
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-3.  **Install dependencies**:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4.  **Configure Environment Variables**:
-    Create a `.env` file in the root directory and add your Ollama API Key:
-    ```
-    OLLAMA_API_KEY=your_actual_api_key_here
-    ```
+4. Create a `.env` file in the project root and add your API key:
+   ```env
+   OLLAMA_API_KEY=your_actual_api_key_here
+   ```
 
 ## Usage
 
-Run the main script:
+Run the application:
 
 ```bash
 python main.py
 ```
 
-I.  The script will fetch and list all available cloud models hosted by Ollama. As of 06 January, 2026, the supported cloud models are:
+When the script starts, it will:
+1. Load your API key from `.env`
+2. Fetch and print the list of available Ollama Cloud models
+3. Prompt you to choose a model number
+4. Start a chat loop with the selected model
 
-1. cogito-2.1:671b
-2. glm-4.6
-3. glm-4.7
-4. kimi-k2:1t
-5. kimi-k2-thinking
-6. qwen3-coder:480b
-7. qwen3-next:80b
-8. deepseek-v3.2
-9. deepseek-v3.1:671b
-10. gpt-oss:120b
-11. nemotron-3-nano:30b
-12. gpt-oss:20b
-13. qwen3-vl:235b-instruct
-14. qwen3-vl:235b
-15. minimax-m2
-16. minimax-m2.1
-17. ministral-3:3b
-18. ministral-3:8b
-19. ministral-3:14b
-20. mistral-large-3:675b
-21. devstral-2:123b
-22. devstral-small-2:24b
-23. gemini-3-pro-preview
-24. gemini-3-flash-preview
-25. gemma3:4b
-26. gemma3:12b
-27. gemma3:27b
-28. rnj-1:8b
+To end the chat session at any time, type:
+```text
+exit
+```
 
+## Notes
+- The list of available models is fetched dynamically, so it may change over time.
+- If a selected model is unavailable or requires a different access level, the app will notify you and return to the model selection step.
+- Usage and billing are managed by your Ollama account and access plan.
 
-II.  Enter the number corresponding to the model you want to chat with.
-
-III. You will now be able to iteratively chat with the model you chose. The LLM responses will be rendered in Markdown format.
-
-IV. Type `exit` to end the session at any time.
-
-## Monitoring your cloud usage
-
-You can keep track of your Ollama cloud usage by logging into your Ollama account and checking it here: https://ollama.com/settings
-
-## Disclaimer
-This project uses Ollama Cloud API. The user is responsible for monitoring their own usage and costs.
-The author is not liable for any charges incurred from exceeding free tier limits or other usage policies.
-
-
+## License
+This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for the full text.
 
